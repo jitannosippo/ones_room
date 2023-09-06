@@ -1,0 +1,50 @@
+// Place all the styles related to the admin/orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// indexページ
+
+.title{
+    font-size: 20px;
+    margin-left: 600px;
+    padding-left: 150px;
+}
+table{
+    border-collapse:  collapse; 
+    width: 60%;
+    margin: 0 20% 0 20%;
+}
+th,td{
+    border: 1px solid black;
+    text-align: center;
+}
+td{
+    height: 30px;
+}
+.show-link a:link{
+    color: black;
+}
+.show-link a:visited{
+    color: black;
+}
+
+
+
+
+// showページ
+
+.title{
+    margin-left: 500px;
+}
+.order-info{
+    display: flex;
+}
+.left{
+    margin-left: 250px;
+    font-size: 20px;
+}
+.right{
+    margin: 0 0 0 50px;
+    float: right;
+    font-size: 20px;
+}

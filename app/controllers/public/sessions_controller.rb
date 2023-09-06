@@ -2,9 +2,9 @@
 
 class Public::SessionsController < Devise::SessionsController
   
-  #def after_sign_in_path_for(resource)
-    #mypage_root_path # ログイン後に遷移するpathを設定/検索画面へ
-  #end
+  def after_sign_in_path_for(resource)
+    root_path # ログイン後に遷移するpathを設定/トップ画面へ
+  end
 
   def after_sign_out_path_for(resource)
     new_customer_session_path # ログアウト後に遷移するpathを設定/ログイン画面へ

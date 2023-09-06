@@ -1,3 +1,33 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.top-image{
+    display: flex;
+}
+
+.top-image-left{
+    background-image: image-url('mado.jpg');
+    background-size: contain;
+    background-position:center center; 
+    width: 50%;
+    height: 400px;
+}
+
+.top-image-right{
+    background-image: image-url('oheya.jpeg');
+    background-size: contain;
+    background-position:center center; 
+    width: 50%;
+    height: 400px;
+}
+
+.caption{
+    width:100%;
+    margin: 0 auto;
+}
+.intro{
+    font-size: 20px;
+    font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    margin-left: 400px;
+}

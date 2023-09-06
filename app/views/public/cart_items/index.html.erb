@@ -1,0 +1,61 @@
+<%= stylesheet_link_tag 'public/cart_items', :media => "all" %>
+
+
+<h1 class="title">ショッピングカート</h1>
+
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>商品</th>
+        <th>単価</th>
+        <th>個数</th>
+        <th>小計</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @cart_items.each do |cart_items| %>
+        <tr>
+          <td><%= cart_items.item.name %></td>
+          <td class="price">￥<%= cart_items.item.price %>-</td>
+          <td class="amount">
+            <%= form_with model:cart_items, url:cart_item_path(cart_items.id), method: :patch do |f| %>
+              <%= f.select :amount, *[1..5] %>個&ensp;&emsp;&emsp;
+              <%= f.submit "変更" %>
+            <% end %>
+          </td>
+          <td class="price">￥<%= cart_items.subtotal %>-</td>
+          <% @total += cart_items.subtotal %>
+          <td class="remark"><p class="delete"><%= link_to "削除する", cart_item_path(cart_items.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></p></td>
+        </tr>
+      <% end %>
+    </tbody>
+  
+  </table>
+</div>
+
+<div class="table-under">
+  <div class="left">
+    <p>商品合計</p>
+    <p>送料</p>
+    <p>請求金額</p>
+  </div>
+  
+  <div class="center">
+    <p>￥<%= @total %>-</p>
+    <p>￥800-</p>
+    <p>￥<%= @total + 800 %>-</p>
+  </div>
+  
+  <div class="right">
+    <%= link_to "他の商品も見る", items_path %>
+    <p class="cart-link"><%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+
+    <% if @cart_items.present? %>
+      <%= link_to "注文情報の入力に進む", new_order_path %>
+    <% end %>
+  </div>
+</div>
+

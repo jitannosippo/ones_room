@@ -1,2 +1,35 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<%= stylesheet_link_tag 'admin/items', :media => "all" %>
+
+<div class="container">
+    <div class="space">
+        
+        <div class="edit-item">
+		
+    		<h4 class="edit-title">商品編集</h4><br>
+    		
+    		<div class="edit-item-left">
+    		    商品名<br><br><br>
+    			商品説明<br><br><br><br>
+    			商品画像<br><br><br>
+    			ジャンル<br><br>
+    			スタイル<br><br>
+    			税込単価<br><br>
+    		</div>
+    		<div class="edit-item-right">
+    			<%= form_with model:@item, url:admin_item_path(@item.id), method: :patch do |f| %>
+    
+        			<%= hidden_field :admin_id, value:current_admin.id %>
+        			<%= f.text_field :name, placeholder:"商品名", class:'text-field', required: true %><br>
+        			<%= f.text_area :explanation, placeholder:"商品説明", class:'text-area', required: true %><br>
+        			<%= f.file_field :image, accept:"image/*", class:'file-field' %><br>
+        			<%= f.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id] }, {}, {class:'select-field'} %><br>
+        			<%= f.select :style_id, Style.all.map{ |style| [style.name, style.id] }, {}, {class:'select-field'} %><br>
+        			<%= f.text_field :price, placeholder:"税込価格", class:'text-field', required: true %>円<br>
+        			<%= f.submit '変更', class:'btn' %>
+    				
+    			<% end %>
+    			
+    		</div>
+        </div>
+    </div>
+</div>

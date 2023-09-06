@@ -1,22 +1,32 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<%= stylesheet_link_tag 'admin/items', :media => "all" %>
 
-<h1>商品一覧</h1>
+<div class="item-top">
+    <h1 class="new-item-title">登録した商品</h1>
+    <p class="new-item-link"><%= link_to "新たに商品を登録する", new_admin_item_path, class:'big-btn' %></p>
+</div>
 
 <% @items.each do |item| %>
     
-    <%= link_to admin_item_path(item.id) do %>   
-        <%= item.name %>
-    <% end %>
+    <div class="item-card">
+        <%= link_to admin_item_path(item.id) do %>
+            <div class="item-left">
+                <% if item.image.attached? %>
+            	    <%= image_tag item.image, size:"200x200" %>
+                <% else %>
+                	<%= image_tag 'no_image', size:"200x200" %>
+                <% end %>
+            </div>
+            <div class="item-right">
+                <h3 class="name"><%= item.name %></h3>
+                <p class="explanation">
+                    <%= item.explanation %><br>
+                    税込単価
+                    ￥<%= item.price %>-
+                </p>
+            </div> 
+        <% end %>
+    </div>
     
-    <% if item.image.attached? %>
-	    <%= image_tag item.image, size:"200x200" %>
-    <% else %>
-    	<%= image_tag 'no_image', size:"200x200" %>
-    <% end %>
-    
-    <%= item.explanation %>
-    
-    <p>税込単価</p>
-    <%= item.price %><span>円</span>
 <% end %>
+
+<%= paginate @items, class:'pagination' %>

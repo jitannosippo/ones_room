@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag 'public/genres', :media => "all" %>
+
+<h1 class="title">商品一覧</h1>
+
+<% @item.each do |item| %>
+    
+    <div class="item-card">
+        <%= link_to item_path(item.id) do %>
+            <div class="item-left">
+                <% if item.image.attached? %>
+            	    <%= image_tag item.image, size:"200x200" %>
+                <% else %>
+                	<%= image_tag 'no_image', size:"200x200" %>
+                <% end %>
+            </div>
+            <div class="item-right">
+                <h3 class="name"><%= item.name %></h3>
+                <p class="explanation">
+                    <%= item.explanation %><br>
+                    税込単価
+                    ￥<%= item.price %>-
+                </p>
+            </div> 
+        <% end %>
+    </div>
+    
+<% end %>
+
+<%= paginate @item, class:'pagination' %>

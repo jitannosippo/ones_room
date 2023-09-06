@@ -1,0 +1,138 @@
+// Place all the styles related to the public/orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// indexページ
+
+.title{
+    font-size: 20px;
+    margin-left: 650px;
+}
+table{
+    border-collapse:  collapse; 
+    width: 60%;
+    margin: 0 20% 0 20%;
+}
+th,td{
+    border: 1px solid black;
+    text-align: center;
+}
+td{
+    height: 30px;
+}
+.show-link a:link{
+    color: black;
+}
+.show-link a:visited{
+    color: black;
+}
+
+
+
+
+// showページ
+
+.title{
+    margin-left: 650px;
+}
+.order-info{
+    display: flex;
+}
+.left{
+    margin-left: 250px;
+    font-size: 20px;
+}
+.right{
+    margin: 0 0 0 50px;
+    float: right;
+    font-size: 20px;
+}
+
+
+
+// newページ
+.new-container{
+    width: 100vw;
+    height: 100vh;
+}
+.new-center{
+    width: 30%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.new-title{
+    font-size: 20px;
+    display: inline-block;
+}
+.new-sub-title{
+    font-size: 15px;
+    display: inline-block;
+}
+.payment-method{
+    font-size: 15px;
+    text-align: left;
+    padding-left: 150px;
+}
+.address{
+    width: 250px;
+    height: 25px;
+}
+.new-btn{
+    padding: 15px;
+    margin-top: 30px;
+    background-color: #e7e5e3;
+    border-radius: 5px;
+    box-shadow: inset 5px 5px 5px #dedbd7, inset -5px -5px 5px #dedbd7;
+    border: none;
+}
+
+
+
+// comfirmationページ
+.com-top{
+    width: 100vw;
+    text-align: center;
+}
+.com-title{
+    display: inline-block;
+    font-size: 20px;
+}
+.com-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.com-left{
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+.com-right{
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+.com-sub-title{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.com-btn{
+    padding: 15px;
+    margin-top: 30px;
+    background-color: #e7e5e3;
+    border-radius: 5px;
+    box-shadow: inset 5px 5px 5px #dedbd7, inset -5px -5px 5px #dedbd7;
+    border: none;
+}
+
+
+// completeページ
+.complete-out{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

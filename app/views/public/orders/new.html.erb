@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag 'public/orders', :media => "all" %>
+
+<div class="new-container">
+    <div class="new-center">
+        <h4 class="new-title">注文情報入力</h4>
+        
+        <%= form_with model: @order, url: orders_comfirmation_path, method: :post do |f| %>
+            <h5 class="new-sub-title">支払い方法</h5>
+            <div class="payment-method">
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
+            </div><br>
+            <h5 class="new-sub-title">お届け先</h5><br>
+            <%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", class:'address' %>
+            <br>
+            <br>
+            <%= f.submit '確認画面に進む', class:'new-btn' %>
+        <% end %>
+
+    </div>
+</div>

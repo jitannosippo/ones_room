@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag 'public/styles', :media => "all" %>
+
+<div class="container">
+    <div class="styles">
+        <div class="style">
+            <p>スタイル一覧</p>
+            <ul>
+                <% @styles.each do |style| %>
+                    <li><%= link_to style.name, style_path(style.id) %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <div class="genres">
+        <div class="genre">
+            <p>ジャンル一覧</p>
+            <ul>
+                <% @genres.each do |genre| %>
+                    <li><%= link_to genre.name, genre_path(genre.id) %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>

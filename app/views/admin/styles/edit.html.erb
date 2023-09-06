@@ -1,7 +1,11 @@
-<h1>Admin::Styles#edit</h1>
-<p>Find me in app/views/admin/styles/edit.html.erb</p>
+<%= stylesheet_link_tag 'admin/styles', :media => "all" %>
 
-<%= form_with model:@styles, url:admin_style_path(@styles.id), method: :patch do |f| %>
-	<%= f.text_field :name %>
-	<%= f.submit '変更を保存' ,class:'btn btn-outline-success' %>
-<% end %>
+<div class="edit-container">
+	<div class="center">
+		<p class="edit-title">スタイル名変更</p>
+		<%= form_with model:@styles, url:admin_style_path(@styles.id), method: :patch do |f| %>
+			<%= f.text_field :name, class:'text_field' %>
+			<%= f.submit '変更を保存' ,class:'btn' %>
+		<% end %>
+	</div>
+</div>

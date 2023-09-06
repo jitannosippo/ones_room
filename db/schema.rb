@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_18_055546) do
+ActiveRecord::Schema.define(version: 2023_09_05_185349) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2023_07_18_055546) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "amount", null: false
+    t.integer "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -87,6 +95,40 @@ ActiveRecord::Schema.define(version: 2023_07_18_055546) do
     t.string "name", null: false
     t.text "explanation", null: false
     t.integer "price", null: false
+    t.integer "admin_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "item_id"
+    t.integer "amount"
+    t.integer "order_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_id"
+    t.string "item_name"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "payment_method"
+    t.integer "customer_id"
+    t.string "address"
+    t.integer "postage"
+    t.integer "total_price"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "item_id", null: false
+    t.string "comment"
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_reviews_on_customer_id"
+    t.index ["item_id"], name: "index_reviews_on_item_id"
   end
 
   create_table "styles", force: :cascade do |t|
@@ -97,4 +139,6 @@ ActiveRecord::Schema.define(version: 2023_07_18_055546) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "customers"
+  add_foreign_key "reviews", "items"
 end

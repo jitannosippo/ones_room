@@ -6,26 +6,61 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/51b1444613.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
     
-    <!--ユーザがログイン状態の時のみ表示-->
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-    <% end %>
+    <header>
+      
+      <div class="header-left">
+        <%= image_tag 'tanutanu', size:"70x70", class:'header-icon' %>
+        <div class="header-logo">ones room</div>
+      </div>
+      
+      <div class="header-right">
+        <ul>
+          
+          <% if admin_signed_in? %>
+            <% if request.fullpath.include? "/admin" %>
+              <li><%= link_to "商品を見る", admin_items_path %></li>
+              <li><%= link_to "マイページ", admin_mypage_path %></li>
+              <li><%= link_to "注文一覧", admin_orders_path %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "商品を見る", items_path %></li>
+              <li><%= link_to "マイページ", customer_mypage_path %></li>
+              <li><%= link_to "カートを見る", cart_items_path %></li>
+              <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+            <% end %>
+          <% elsif customer_signed_in? %>
+            <li><%= link_to "商品を見る", items_path %></li>
+            <li><%= link_to "マイページ", customer_mypage_path %></li>
+            <li><%= link_to "カートを見る", cart_items_path %></li>
+            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "商品を見る", items_path %></li>
+            <li><%= link_to "マイページ", customer_mypage_path %></li>
+            <li><%= link_to "カートを見る", cart_items_path %></li>
+            <li><%= link_to "ログイン", new_customer_session_path %></li>
+          <% end %>
+
+        </ul>
+      </div>
+      
+      
+    </header>
     
-    <!--販売者がログイン状態の時のみ表示-->
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% end %>
+    <main>
+      
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+    
   </body>
 </html>

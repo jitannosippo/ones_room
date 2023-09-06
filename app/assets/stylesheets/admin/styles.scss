@@ -1,3 +1,107 @@
 // Place all the styles related to the admin/styles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container{
+    width: 1366px;
+    height: 100vh;
+}
+.top{
+    height: 10%;
+}
+.new-btn{
+    list-style:none;
+    float:right;
+    width:130px;
+    height:30px;
+    background:#ede9e3;
+    padding: 10px 10px 5px 25px;
+    margin: 20px 10px 0 0;
+    font-size: 15px;
+    border-radius: 10px;
+    background: #e7e5e3;
+    box-shadow: inset 10px 10px 20px #dedbd7, inset -10px -10px 20px #dedbd7;
+}
+.new-btn a:link{
+    color: black;
+}
+.new-btn a:visited{
+    color: black;
+}
+.bottom{
+    height: 90%;
+    display: flex;
+}
+.style{
+    width: 49%;
+    height: 100%;
+}
+.genre{
+    width: 49%;
+    height: 100%;
+}
+p{
+    font-size: 20px;
+    margin: 30px 0 0 200px;
+}
+.s-name{
+    margin-left: 200px;
+    font-size: 15px;
+    float: left;
+}
+.g-name{
+    margin-left: 200px;
+    font-size: 15px;
+    float: left;
+}
+.edit{
+    margin-right: 250px;
+    font-size: 15px;
+    float: right;
+}
+.edit a:link{
+    color: black;
+}
+.edit a:visited{
+    color: black;
+}
+
+.edit-btn{
+    width:150px;
+    height:150px;
+    font-size: 13px;
+    border-radius: 5px;
+    background-color: #d4d0cd;
+    padding: 5px;
+    margin-bottom: 3px;
+}
+
+
+// editページ
+.edit-container{
+    width: 100vw;
+    height: 100vh;
+}
+.center{
+    width: 33%;
+    height: 100%;
+    margin: 0 auto;
+}
+.edit-title{
+    font-size: 20px;
+    margin: 200px 0 0 0;
+    padding: 0 0 0 150px;
+}
+.text_field{
+    width: 200px;
+    height: 30px;
+    margin-left: 100px;
+}
+.btn{
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: #e7e5e3;
+    box-shadow: inset 5px 5px 5px #dedbd7, inset -5px -5px 5px #dedbd7;
+
+}

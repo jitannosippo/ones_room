@@ -1,0 +1,55 @@
+<%= stylesheet_link_tag 'admin/orders', :media => "all" %>
+
+<h1 class="title">注文履歴詳細</h1>
+
+<div class="order-info">
+    <div class="left">
+        <p>ご注文日</p>
+        <p>ご注文者</p>
+        <p>お届け先</p>
+        <br>
+        <p>商品金額</p>
+        <p>送料</p>
+        <p>請求金額</p>
+        <p>支払方法</p>
+        <br>
+    </div>
+    <div class="right">
+        <p><%= @order.created_at.strftime('%Y/%m/%d') %></p>
+        <p><%= @order.name %></p>
+        <p><%= @order.address %></p>
+        <br>
+        <p>￥<%= @order.total_price - @order.postage %>-</p>
+        <p>￥800-</p>
+        <p>￥<%= @order.total_price %>-</p>
+        <% if @order.payment_method == "credit_card" %>
+            <p>クレジットカード</p>
+        <% else %>
+            <p>銀行振込</p>
+        <% end %>
+        <br>
+    </div>
+</div>
+
+<div class="item-info">
+    <table>
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>単価</th>
+                <th>個数</th>
+                <th>商品合計</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @order.order_items.each do |order_item| %>  
+            <tr>
+                <td><%= order_item.item.name %></td>
+                <td>￥<%= order_item.order_price %>-</td>
+                <td><%= order_item.amount %></td>
+                <td>￥<%= order_item.order_price * order_item.amount %>-</td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
