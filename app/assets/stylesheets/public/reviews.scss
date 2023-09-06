@@ -1,0 +1,206 @@
+// Place all the styles related to the public/reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.star{
+    color:#fc3;
+}
+
+.star-rating{
+    position:relative;
+    width:5em;
+    height:1em;
+    font-size:25px;
+    
+}
+
+.star-rating-front{
+    position:absolute;
+    top:0;
+    left:0;
+    overflow:hidden;
+    color:#fc3;
+}
+
+.star-rating-back{
+    color:#ccc;
+}
+
+.average-score{
+    display:flex;
+    padding-bottom: -100px;
+}
+
+.average-score-display{
+    font-size:15px;
+}
+
+
+
+indexページ
+.index-container{
+    width: 100vw;
+    height: 100vh;
+}
+.reviews{
+    width: 550px;
+    height: 110px;
+    background-color: #fff9ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.review-box{
+    width: 500px;
+    height: 100px;
+    background-color: #fff9ee;
+    border: 3px solid #acc5db;
+    margin: 0 auto;
+    text-align: center;
+}
+.rev-box{
+    width: 500px;
+    height: 110px;
+    background-color: #acc5db;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.item-name{
+    font-size: 15px;
+    margin: 0;
+}
+.average-score{
+    width: 200px;
+    margin-left: 170px;
+    padding-top: 10px;
+}
+.avg-score{
+    font-size: 15px;
+    margin: 10px 0 0 5px;
+    width: 30px;
+    float: left;
+}
+.rev-score{
+    font-size: 15px;
+}
+.average-score-self{
+    width: 200px;
+    margin-left: 250px;
+    margin-top: -150px;
+    display: inline-block;
+}
+.comment{
+    width: 400px;
+    height: 60px;
+    background-color: #fff9ee;
+    font-size: 15px;
+    margin: 0 auto;
+}
+.rev-name{
+    font-size: 15px;
+    margin-left: -300px;
+}
+.avg-score-self{
+    font-size: 15px;
+    margin: -10px 0 0 150px;
+    width: 30px;
+    float: left;
+}
+
+.pagination{
+    padding: 550px 0 0 650px;
+}
+
+.page{
+    
+    padding: 20px 20px 20px 24px;
+    border: 2px solid #937b69;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+    border-radius: 50%;
+}
+.page a:link{
+    color: white;
+}
+.page a:visited{
+    color: white;
+}
+.current{
+    border: 2px solid #937b69;
+    padding: 20px 23px 20px 23px;
+    margin: 5px;
+    font-size: 20px;
+    background: #937B69;
+    color: white;
+    pointer-events: none;
+    
+}
+.first{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.first a:link{
+    color: white;
+}
+.first a:visited{
+    color: white;
+}
+.prev{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.prev a:link{
+    color: white;
+}
+.prev a:visited{
+    color: white;
+}
+.next{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.next a:link{
+    color: white;
+}
+.next a:visited{
+    color: white;
+}
+.last{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.last a:link{
+    color: white;
+}
+.last a:visited{
+    color: white;
+}

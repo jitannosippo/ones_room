@@ -1,22 +1,32 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
-<%= @items.each do |item| %>
+<%= stylesheet_link_tag 'public/items', :media => "all" %>
+
+<div class="item-top">
+    <h1 class="title">商品一覧</h1>
+    <p class="style-link"><%= link_to "カテゴリ別に見る", styles_path, class:'big-btn' %></p>
+</div>
+
+<% @items.each do |item| %>
     
-    <h1>商品一覧</h1>
-    
-    <%= link_to item_path(item.id) do %>   
-        <%= item.name %>
-    <% end %>
-    
-    <% if item.image.attached? %>
-	    <%= image_tag item.image, size:"200x200" %>
-    <% else %>
-    	<%= image_tag 'no_image', size:"200x200" %>
-    <% end %>
-    
-    <%= item.explanation %>
-    
-    <p>税込単価</p>
-    <%= item.price %>
+    <div class="item-card">
+        <%= link_to item_path(item.id) do %>
+            <div class="item-left">
+                <% if item.image.attached? %>
+            	    <%= image_tag item.image, size:"200x200" %>
+                <% else %>
+                	<%= image_tag 'no_image', size:"200x200" %>
+                <% end %>
+            </div>
+            <div class="item-right">
+                <h3 class="name"><%= item.name %></h3>
+                <p class="explanation">
+                    <%= item.explanation %><br>
+                    税込単価
+                    ￥<%= item.price %>-
+                </p>
+            </div> 
+        <% end %>
+    </div>
     
 <% end %>
+
+<%= paginate @items, class:'pagination' %>

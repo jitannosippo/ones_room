@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'admin/admins', :media => "all" %>
+
+<h1 class="title">ユーザ情報</h1>
+
+<div class="user-info">
+    <div class="user-info-left">
+        <p>ユーザーネーム</p>
+        <p>メールアドレス</p>
+        <p>登録日時</p>
+    </div>
+    
+    <div class="user-info-right">
+        <p><%= @admin.name %></p>
+        <p><%= @admin.email %></p>
+        <p><%= @admin.created_at.strftime('%Y/%m/%d') %></p>
+    </div>
+</div>
+
+
+    

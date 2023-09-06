@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag 'public/reviews', :media => "all" %>
+
+<div class="index-container">
+     <div class="reviews">
+          <div class="review-box">
+               <p class="item-name"><%= @item.name %>のレビュー総合</p>
+               <div class="average-score">
+          		<div class="star-rating">
+          			<div class="star-rating-front" style="width: <%= @item.review_score_percentage %>%;">★★★★★</div>
+          			<div class="star-rating-back">★★★★★</div>
+          		</div>
+          		<h6 class="avg-score"><%= @item.avg_score %></h6>
+          		<div class="average-score-display"></div>
+     	     </div>
+     	     <p class="rev-score">
+     	          平均<%= @item.review_score_percentage %>点&emsp;&emsp;
+                    <%= @item.reviews.count %>件のレビュー
+     	     </p>
+          </div>
+     </div>
+     <% @reviews.each do |reviews| %>
+          <div class="rev-box">
+               <div class="rev-top">
+                    <div class="rev-name"><%= reviews.customer.name %>様のレビュー</div>
+                    <div class="average-score-self">
+               		<div class="star-rating">
+               			<div class="star-rating-front" style="width: <%= reviews.score * 100/5 %>%;">★★★★★</div>
+               			<div class="star-rating-back">★★★★★</div>
+               		</div>
+               		<h6 class="avg-score-self"><%= reviews.score.round(1).to_f %></h6>
+               		<div class="average-score-display"></div>
+          	     </div>
+               </div>
+               
+               <div class="comment"><%= reviews.comment %></div>
+          </div>
+     <% end %>
+</div>
+
+<%= paginate @reviews, class:'pagination' %>
+

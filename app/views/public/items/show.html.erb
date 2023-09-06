@@ -1,35 +1,88 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<%= stylesheet_link_tag 'public/items', :media => "all" %>
 
-<!--商品詳細-->
-<%= @item.name %>
+<div class="show-left">
+	<% if @item.image.attached? %>
+	    <%= image_tag @item.image, size:"400x400" %>
+	<% else %>
+	    <%= image_tag 'no_image', size:"400x400" %>
+	<% end %>
+	
+</div>
 
-<% if @item.image.attached? %>
-    <%= image_tag @item.image, size:"400x400" %>
-<% else %>
-    <%= image_tag 'no_image', size:"400x400" %>
-<% end %>
+<div class="show-right">
+	<p class="show-name"><%= @item.name %></p>
+	<p class="show-explanation"><%= @item.explanation %></p>
+	<p class="show-price">税込単価&emsp;￥<%= @item.price %>-</p>
+	
+	<!--いいね機能-->
+	<% if @item.favorited_by?(current_customer) %>
+		<p>
+			<%= link_to item_favorites_path(@item.id), method: :delete do %>
+				❤
+			<% end %>
+			<%= @item.favorites.count %>&emsp;いいね
+		</p>
+	<% else %>
+		<p>
+			<%= link_to item_favorites_path(@item.id), method: :post do %>
+				♡
+			<% end %>
+			<%= @item.favorites.count %>&emsp;いいね
+		</p>
+	<% end %>
+	
+	<div class="cart">
+		<%= form_with model:@cart_item, url:cart_items_path do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, [['1',1],['2',2],['3',3]], {}, {class: 'select'} %>個
+          <%= f.submit 'カートに追加', class:'go-cart' %>
+        <% end %>
+	</div>
 
-<%= @item.explanation %>
+	
+	<br>
+	<p class="sub-title">この商品のレビュー</p>
 
-<p>税込単価</p>
-<%= @item.price %><span>円</span>
+	<div class="average-score">
+		<div class="star-rating">
+			<div class="star-rating-front" style="width: <%= @item.review_score_percentage %>%;">★★★★★</div>
+			<div class="star-rating-back">★★★★★</div>
+		</div>
+		<h6><%= @item.avg_score %></h6>
+		<div class="average-score-display"></div>
+	</div>
 
+	<p class="review-score">
+	平均<%= @item.review_score_percentage.round %>点
+	<%= @item.reviews.count %>件のレビュー</p>
+	
+	<br>
+	<p class="sub-title">レビューを投稿</p>
 
-<!--いいね機能-->
-<% if @item.favorited_by?(current_customer) %>
-	<p>
-		<%= link_to item_favorites_path, method: :delete do %>
-			❤
-		<% end %>
-		<%= @item.favorites.count %>いいね
-	</p>
-<% else %>
-	<p>
-		<%= link_to item_favorites_path, method: :post do %>
-			♡
-		<% end %>
-		<%= @item.favorites.count %>いいね
-	</p>
-<% end %>
+	<%= form_with model:@review, url:item_reviews_path(@item.id), local:true do |f| %>
+
+		<div class="ratings">
+			<span class="fa fa-star-o fa-2x" id="star"></span>
+			<span class="fa fa-star-o fa-2x" id="star"></span>
+			<span class="fa fa-star-o fa-2x" id="star"></span>
+			<span class="fa fa-star-o fa-2x" id="star"></span>
+			<span class="fa fa-star-o fa-2x" id="star"></span>
+		</div>
+	
+	
+	    <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+	    
+	    <%= f.hidden_field :score, id:"rating-value" %>
+	    <%= f.hidden_field :item_id, value:@item.id %>
+	    <%= f.text_area :comment, class:'comment' %>
+	    <%= f.submit "保存", class:'btn' %>
+    	<br>
+	    <p class="review-link"><%= link_to "他のレビューを見る", item_reviews_path(@item.id) %></p>
+    
+	<% end %>
+
+</div>
+
+<%= javascript_pack_tag "review.js" %>
+
     

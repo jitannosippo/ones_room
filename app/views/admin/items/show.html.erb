@@ -1,34 +1,55 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<%= stylesheet_link_tag 'admin/items', :media => "all" %>
 
-
-<!--商品詳細-->
-<%= @item.name %>
-
-<% if @item.image.attached? %>
-    <%= image_tag @item.image, size:"400x400" %>
-<% else %>
-    <%= image_tag 'no_image', size:"400x400" %>
+<% if @item.errors.any? %>
+<div class="error">
+	<%= @item.errors.count %>件のエラーが発生しました
+	<ul>
+		<% @item.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
 <% end %>
 
-<%= @item.explanation %>
+<div class="show-left">
+	<% if @item.image.attached? %>
+	    <%= image_tag @item.image, size:"400x400" %>
+	<% else %>
+	    <%= image_tag 'no_image', size:"400x400" %>
+	<% end %>
+</div>
 
-<p>税込単価</p>
-<%= @item.price %><span>円</span>
+<div class="show-right">
+	<p class="show-name"><%= @item.name %></p>
+	<p class="show-explanation"><%= @item.explanation %></p>
+	<p class="show-price">税込単価&emsp;￥<%= @item.price %>-</p>
+	
+	<br>
+	<p class="sub-title">この商品のレビュー</p>
+
+	<div class="average-score">
+		<div class="star-rating">
+			<div class="star-rating-front" style="width: <%= @item.review_score_percentage %>%">★★★★★</div>
+			<div class="star-rating-back">★★★★★</div>
+		</div>
+		<h6><%= @item.avg_score %></h6>
+		<div class="average-score-display"></div>
+	</div>
+
+	<p class="review-score">
+	平均<%= @item.review_score_percentage.round %>点
+	<%= @item.reviews.count %>件のレビュー</p>
+	
+	<br>
+	
+	<p class="review-link"><%= link_to "他のレビューを見る", item_reviews_path(@item.id) %></p>
+	
+	<div class="edition">
+		<div class="delete-btn"><%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+		<div class="edit-btn"><%= link_to "変更", edit_admin_item_path(@item.id) %></div>
+	</div>
+
+</div>
 
 
-<!--いいね機能-->
-<% if @item.favorited_by?(current_customer) %>
-	<p>
-		<%= link_to item_favorites_path, method: :delete do %>
-			❤<%= @item.favorites.count %>いいね
-		<% end %>
-	</p>
-<% else %>
-	<p>
-		<%= link_to item_favorites_path, method: :post do %>
-			♡<%= @item.favorites.count %>いいね
-		<% end %>
-	</p>
-<% end %>
     

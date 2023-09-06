@@ -1,29 +1,72 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<%= stylesheet_link_tag 'admin/items', :media => "all" %>
 
-<!--商品投稿-->
-<%= form_with model:@item, url:'/admin/items' do |f| %>
+<% if @item.present? && @item.errors.any? %>
+	<div class="error">
+	  <%= @item.errors.count %>件のエラーが発生しました
+	  <ul>
+	    <% @item.errors.full_messages.each do |message| %>
+	      <li><%= message %></li>
+	    <% end %>
+	  </ul>
+	</div>
+<% end %>
 
-    <%= f.text_field :name, placeholder:"商品名" %>
-	<%= f.text_area :explanation, placeholder:"商品説明" %>
-	<%= f.file_field :image, accept:"image/*" %>
-	<%= f.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id] } %>
-	<%= f.select :style_id, Style.all.map{ |style| [style.name, style.id] } %>
-	<%= f.text_field :price, placeholder:"税込価格" %><span>円</span>
-	<%= f.submit '投稿' %>
+<div class="new">
 	
-<% end %>
+	<div class="new-item">
+		
+		<h4 class="new-title">商品登録</h4><br>
+		<ul class="new-item-left">
+			<li>商品名</li><br><br>
+			<li>商品説明</li><br><br>
+			<li>商品画像</li><br><br>
+			<li>ジャンル</li><br>
+			<li>スタイル</li><br><br>
+			<li>税込単価</li><br><br>
+		</ul>
+		
+		<ul class="new-item-right">
+			<%= form_with model:@item, url:'/admin/items' do |f| %>
 
+				<%= f.hidden_field :admin_id %>
+			<li><%= f.text_field :name, placeholder:"商品名", class:'text-field', required: true %></li><br>
+			<li><%= f.text_area :explanation, placeholder:"商品説明", class:'text-area', required: true %></li><br>
+			<li><%= f.file_field :image, accept:"image/*" %></li><br>
+			<li><%= f.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id] }, class:'text-field' %></li><br>
+			<li><%= f.select :style_id, Style.all.map{ |style| [style.name, style.id] }, class:'text-field' %></li><br>
+			<li><%= f.text_field :price, placeholder:"税込価格", class:'text-field', required: true %>円</li><br>
+				<%= f.submit '投稿', class:'btn' %>
+				
+			<% end %>
+			
+		</ul>
+	</div>
+	
+	
+	<div class="right">
+		<div class="new-style">
+			
+			<h4 class="new-title">スタイル登録</h4>
+			<div class="style">
+				<%= form_with model:@style, url:'/admin/styles' do |f| %>
+					<%= f.text_field :name, placeholder:"スタイル名" %>
+					<%= f.submit '新規登録' ,class:'btn btn-outline-success' %>
+				<% end %>
+			</div>
+			
+		</div>
+		<div class="new-genre">
+			
+			<h4 class="new-title">ジャンル登録</h4>
+			<div class="genre">
+				<%= form_with model:@genre, url:'/admin/genres' do |f| %>
+					<%= f.text_field :name, placeholder:"ジャンル名" %>
+					<%= f.submit '新規登録' ,class:'btn btn-outline-success' %>
+				<% end %>
+			</div>
+			
+			<div class="styles-link"><%= link_to "スタイル・ジャンル一覧を見る", admin_styles_path %></div>
+		</div>
+	</div>
+</div>
 
-<!--ジャンル新規登録-->
-<%= form_with model:@genre, url:'/admin/genres' do |f| %>
-	<%= f.text_field :name, placeholder:"ジャンル名" %>
-	<%= f.submit '新規登録' ,class:'btn btn-outline-success' %>
-<% end %>
-
-
-<!--スタイル新規登録-->
-<%= form_with model:@style, url:'/admin/styles' do |f| %>
-	<%= f.text_field :name, placeholder:"スタイル名" %>
-	<%= f.submit '新規登録' ,class:'btn btn-outline-success' %>
-<% end %>

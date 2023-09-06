@@ -2,9 +2,9 @@
 
 class Admin::SessionsController < Devise::SessionsController
   
-  #def after_sign_in_path_for(resource)
-    #mypage_root_path # ログイン後に遷移するpathを設定/商品投稿画面へ
-  #end
+  def after_sign_in_path_for(resource)
+    admin_path # ログイン後に遷移するpathを設定/admin用のトップ画面へ
+  end
 
   def after_sign_out_path_for(resource)
     new_admin_session_path # ログアウト後に遷移するpathを設定/ログイン画面へ

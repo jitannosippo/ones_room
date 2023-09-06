@@ -10,6 +10,142 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ * require_tree .
  *= require_self
  */
+
+header{
+    background:white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+
+}
+
+main {
+	background:#e7e5e3 no-repeat left top;
+	font-family: "Kokoro";
+	font-size:80%;
+	height: 100vh;
+	padding-top: 125px;
+	font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+
+}
+
+.header-icon{
+    margin-left: 50px;
+    margin-bottom: -5px;
+    margin-top: 5px;
+}
+
+.header-logo{
+    font-size:30px;
+    font-family:'Sacramento', cursive;
+    margin-left: 35px;
+}
+
+.header-right{
+    float:right;
+    margin: -80px 80px 0 0;
+}
+
+.header-right li{
+    list-style:none;
+    float:left;
+    width:100px;
+    height:30px;
+    background:#ede9e3;
+    padding:10px 10px 5px 25px;
+    margin:10px;
+    
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: inset 5px 5px 20px #e8e8e8, inset -5px -5px 20px #ffffff;
+}
+
+.header-right li a:link{
+    color: black;
+}
+
+.header-right li a:visited{
+    color: black;
+}
+
+
+.background{
+    background:#ede9e3;
+    width:100px;
+    height:100px;
+    
+}
+.box{
+    border-radius:20px;
+    background:#ebe5e5;
+    box-shadow:13px 13px 26px #ffffff, -13px -13px 26px #cac5c5;
+    width:50px;
+    height:50px;
+    margin:30px 0 0 10px;
+    
+}
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+ 
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+.flash-message.alert {
+  background-color: #ffc3bc;
+  color: #c01300;
+  border: solid 1px #c01300;
+}
+
+
+
+/*ログイン、サインアップ画面*/
+.sign-in{
+    margin-left: 650px;
+}
+.info{
+    display: flex;
+}
+.left{
+    margin-left: 550px;
+    font-size: 20px;
+}
+.right{
+    margin-left: 50px;
+    float: right;
+    font-size: 20px;
+}
+.form{
+    width: 200px;
+    height: 30px;
+    margin-bottom: -5px;
+}
+.form:click{
+    border-color: gray;
+}
+.link{
+    margin-top: 50px;
+    font-size: 15px;
+}
+.link a:link{
+    color: black;
+}
+.link a:visited{
+    color: black;
+}
+.btn{
+    width: 100px;
+    height: 50px;
+    margin-top: 30px;
+}
+

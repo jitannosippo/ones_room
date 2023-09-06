@@ -1,7 +1,43 @@
-<h1>Admin::Styles#index</h1>
-<p>Find me in app/views/admin/styles/index.html.erb</p>
+<%= stylesheet_link_tag 'admin/styles', :media => "all" %>
 
-<% @styles.each do |styles| %>
-	<%= styles.name %>
-	<%= link_to "編集する" , edit_admin_style_path(styles.id) ,class:'btn btn-outline-primary' %>
-<% end %>
+
+<div class="container">
+	
+	<div class="top">
+		<div class="new-btn">
+			<%= link_to "新しく登録する", new_admin_item_path %>
+		</div>
+	</div>
+	
+	<div class="bottom">
+		<div class="style">
+			<p>登録したスタイル一覧</p><br>
+			<div class="s-name">
+				<% @styles.each do |styles| %>
+					<%= styles.name %><br>
+				<% end %>
+			</div>
+			<div class="edit">
+				<% @styles.each do |styles| %>
+					<%= link_to "編集", edit_admin_style_path(styles.id), class:'edit-btn' %>
+					<%= link_to "削除", admin_style_path(styles.id), method: :delete, class:'edit-btn', "data-confirm" => "本当に削除しますか？" %><br>
+				<% end %>
+			</div>
+		</div>
+		<div class="genre">
+			<p>登録したジャンル一覧</p><br>
+			<div class="g-name">
+				<% @genres.each do |genres| %>
+					<%= genres.name %><br>
+				<% end %>
+			</div>
+			<div class="edit">
+				<% @genres.each do |genres| %>
+					<%= link_to "編集", edit_admin_genre_path(genres.id), class:'edit-btn' %>
+					<%= link_to "削除", admin_genre_path(genres.id), method: :delete, class:'edit-btn', "data-confirm" => "本当に削除しますか？" %><br>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+

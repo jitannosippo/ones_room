@@ -1,3 +1,275 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// indexページ
+
+.item-top{
+    display: flex;
+}
+.title{
+    font-size: 30px;
+    width: 450px;
+    margin-left: 650px;
+}
+.style-link{
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+    margin: 20px 10px 20px 150px;
+    padding: 20px 0 10px 20px;
+    background-color: #e7e5e3;
+    border-radius: 5px;
+    box-shadow: inset 10px 10px 10px #dedbd7, inset -10px -10px 10px #dedbd7;
+    border: none;
+}
+.style-link a:link{
+    color: black;
+}
+.style-link a:visited{
+    color: black;
+}
+
+.item-card{
+    width: 49%;
+    height: 30%;
+    border-radius: 10px;
+    border: 2px solid #8C847C;
+    float: left;
+    margin: 0 1px 1px 0;
+}
+.item-left{
+    margin: 20px 0 0 20px;
+}
+.item-right{
+    float: right;
+    margin: -170px 100px 0 -100px;
+}
+.name{
+    font-size: 20px;
+    color: black;
+}
+.explanation{
+    font-size: 15px;
+    color: black;
+}
+
+
+
+
+
+
+.pagination{
+    padding: 550px 0 0 650px;
+}
+
+.page{
+    
+    padding: 20px 20px 20px 24px;
+    border: 2px solid #937b69;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+    border-radius: 50%;
+}
+.page a:link{
+    color: white;
+}
+.page a:visited{
+    color: white;
+}
+.current{
+    border: 2px solid #937b69;
+    padding: 20px 23px 20px 23px;
+    margin: 5px;
+    font-size: 20px;
+    background: #937B69;
+    color: white;
+    pointer-events: none;
+    
+}
+.first{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.first a:link{
+    color: white;
+}
+.first a:visited{
+    color: white;
+}
+.prev{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.prev a:link{
+    color: white;
+}
+.prev a:visited{
+    color: white;
+}
+.next{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.next a:link{
+    color: white;
+}
+.next a:visited{
+    color: white;
+}
+.last{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #937b69;
+    padding: 20px;
+    margin: 5px;
+    font-size: 20px;
+    background: #BEB098;
+    color: white;
+}
+.last a:link{
+    color: white;
+}
+.last a:visited{
+    color: white;
+}
+
+
+// showページ
+.show-left{
+    width: 49%;
+    margin: 50px 0 0 100px;
+}
+.show-right{
+    width: 49%;
+    float: right;
+    margin-top: -450px;
+}
+.cart{
+    margin-left: 300px;
+    margin-top: -50px;
+    font-size: 15px;
+}
+.select{
+    width: 50px;
+    height: 30px;
+    background-color: #e7e5e3;
+    
+}
+.go-cart{
+    width: 100px;
+    height: 40px;
+    background-color: #e7e5e3;
+    border-radius: 5px;
+    box-shadow: inset 10px 10px 10px #dedbd7, inset -10px -10px 10px #dedbd7;
+    border: none;
+}
+.go-cart a:link{
+    color: black;
+}
+.go-cart a:visited{
+    color: black;
+}
+.show-name{
+    font-size: 20px;
+    color: black;
+}
+.show-explanation{
+    font-size: 15px;
+    color: black;
+}
+.show-price{
+    font-size: 15px;
+    color: black;
+}
+.sub-title{
+    font-size: 20px;
+    color: black;
+}
+h6{
+    font-size: 20px;
+    margin-left: 5px;
+    margin-top: 0;
+}
+.review-score{
+    font-size: 15px;
+    margin-top: -40px;
+}
+.comment{
+    width: 300px;
+    height: 100px;
+    background-color: #f1f2ed;
+    border-radius: 10px;
+    border: none;
+}
+.btn{
+    width: 100px;
+    height: 40px;
+    margin-top: -100px;
+    background-color: #e7e5e3;
+    border-radius: 5px;
+    box-shadow: inset 10px 10px 10px #dedbd7, inset -10px -10px 10px #dedbd7;
+    border: none;
+}
+.review-link{
+    margin-top: -10px;
+}
+.review-link a:link{
+    color: black;
+}
+.review-link a:visited{
+    color: black;
+}
+
+.star{
+    color:#fc3;
+}
+
+.star-rating{
+    position:relative;
+    width:5em;
+    height:1em;
+    font-size:25px;
+    
+}
+
+.star-rating-front{
+    position:absolute;
+    top:0;
+    left:0;
+    overflow:hidden;
+    color:#fc3;
+}
+
+.star-rating-back{
+    color:#ccc;
+}
+.average-score{
+    display:flex;
+    padding-bottom: -100px;
+}
+
+.average-score-display{
+    font-size:15px;
+}

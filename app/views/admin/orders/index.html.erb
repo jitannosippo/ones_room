@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'admin/orders', :media => "all" %>
+
+<h1 class="title">注文履歴一覧</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ご注文日</th>
+            <th>ご注文者</th>
+            <th>商品名</th>
+            <th>個数</th>
+            <th>請求金額</th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @order_item.each do |order_item| %>  
+        <tr>
+            <td><%= order_item.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= order_item.order.name %></td>
+            <td style="text-align: left;"><%= order_item.item.name %></td>
+            <td><%= order_item.amount %>個</td>
+            <td>￥<%= order_item.order_price * order_item.amount %>-</td>
+            <td class="show-link"><%= link_to '詳細を見る',  admin_order_path(order_item.order.id) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
