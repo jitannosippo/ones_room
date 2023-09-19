@@ -65,7 +65,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
 
 gem 'dotenv-rails'
-group :production do
+group :production do, :staging do
   gem 'mysql2'
 end
 
